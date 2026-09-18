@@ -274,7 +274,7 @@ function positionPopup(host, badge) {
             <div class="top">
                 <div class="name-box">
                     <div class="name">${artist}</div>
-                    <a href="https://github.com/NuclearBlox/Check-SoulOverAI-extension/wiki/How-songs-status-gets-decided" target="_blank" class="sub">How it works & FAQ →</a>
+                    <a href="https://github.com/NuclearBlox/SoundProof-extension/wiki/How-songs-status-gets-decided" target="_blank" class="sub">How it works & FAQ →</a>
                 </div>
                 <div class="verdict">
                     <div class="pct" style="color:var(--dim)">—%</div>
@@ -306,7 +306,7 @@ function positionPopup(host, badge) {
                     </div>
                     <span class="ai-label">votes</span>
                 </div>
-                <a href="https://github.com/NuclearBlox/Check-SoulOverAI-extension/wiki/Appealing-an-incorrect-rating" target="_blank" class="appeal">
+                <a href="https://github.com/NuclearBlox/SoundProof-extension/wiki/Appealing-an-incorrect-rating" target="_blank" class="appeal">
                     <span>Report</span><span class="full">Mistake?</span>
                 </a>
             </div>
