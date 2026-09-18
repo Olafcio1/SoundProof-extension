@@ -68,7 +68,18 @@ async function fetchDataFromSupabase(artist, platformClass) {
 }
 
 async function getArtistStatus(artist, platformClass, forcedRefresh) { // checks the cache first, if not found or expired, fetches from Supabase and updates the cache
-    if ((globalThis ?? window)['vblocked'] && vblocked.includes(artist)) {
+    let artistEq = artist.toLowerCase().trim();
+    if (artistEq.startsWith('dj ')) {
+        console.log(`[SoundProof] Smart blocking ${artist} on ${platformClass}`);
+
+        return {
+            out_verified: true,
+            out_ai: 1,
+            out_human: 0
+        };
+    }
+
+    if ((globalThis ?? window)['vblocked'] && vblocked.includes(artistEq)) {
         console.log(`[SoundProof] VBlock found for ${artist} on ${platformClass}`);
 
         return {
@@ -78,7 +89,7 @@ async function getArtistStatus(artist, platformClass, forcedRefresh) { // checks
         };
     }
 
-    const key = `sp_${platformClass}_${artist.toLowerCase().trim()}`;
+    const key = `sp_${platformClass}_${artistEq}`;
 
     if (forcedRefresh == false) {
         const cachedData = await consultCache(key);
