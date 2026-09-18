@@ -1,4 +1,4 @@
-const hubs = `
+const vblocked = `
 
 UChxyrqFh3SDEJ_mVtOlliAg  //  @Besomorph
 
