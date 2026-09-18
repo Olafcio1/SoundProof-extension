@@ -2,7 +2,7 @@
 A bleeding-edge fork of SoundProof with my proposed features
 
 > [!IMPORTANT]
-> If you are here because you are an artist/fan who feels unfairly blocked, you're in luck! [appeal here (official repo link)!](https://github.com/NuclearBlox/SoundProof-extension/wiki/Appealing-an-incorrect-rating)
+> If you are here because you are an artist/fan who feels unfairly blocked, you're in luck! [appeal here.](https://github.com/Olafcio1/SoundProof-extension/issues) you HAVE TO provide a proof that you are making your music.
 
 > [!IMPORTANT]
 > This is an unofficial fork of the SoundProof extension. Find the original here: https://github.com/NuclearBlox/SoundProof-extension
