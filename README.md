@@ -14,7 +14,7 @@ A Chrome extension that watches your music streaming platform of choice to tell 
 
 It automatically checks the current track against SlopCall, an API built specifically for SoundProof
 
-**Supports:** Spotify, YouTube Music, SoundCloud, Apple Music
+**Supports:** Spotify, YouTube Music, SoundCloud, Apple Music<br/>
 **Main Target:** YouTube Music
 
 ![Image showing how anyone can vote!](Examples/VoteYourSelf.png)
