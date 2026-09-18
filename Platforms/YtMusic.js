@@ -40,7 +40,13 @@ function checkAndUpdateBadge() {
             currentArtist = newArtist;
             currentTitle = newTitle;
 
-            DecideBadge('90px', '50px', '.subtitle.ytmusic-player-bar a', '#left-controls > span', nextButton, 'auto', 'music');
+            DecideBadge(
+                '90px', '50px',
+                { artist: '.subtitle.ytmusic-player-bar a', title: '.title.ytmusic-player-bar' },
+                '#left-controls > span',
+                nextButton,
+                'auto', 'music'
+            );
         }
     }
 }
