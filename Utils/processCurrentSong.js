@@ -7,7 +7,7 @@ function SmartSkip(title) {
 }
 
 window.DecideBadge = async function(AIwidth, humanWidth, { artist: selectorArtist, title: selectorTitle }, badgeLocation, skipElement, padding, platformClass) {
-    let title = document.querySelector(selectorTitle)?.textContent?.trim?.());
+    let title = document.querySelector(selectorTitle)?.textContent?.trim?.();
 
     if (title && SmartSkip(title)) {
         const artistElement = Array.from(document.querySelectorAll(selectorArtist)).find(el => el.textContent.trim() !== '') ?? document.querySelector(selector);
