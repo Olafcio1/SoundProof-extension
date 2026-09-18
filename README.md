@@ -1,4 +1,4 @@
-# SoundProof Fanta Edition
+# SoundProof+
 A bleeding-edge fork of SoundProof with my proposed features
 
 > [!IMPORTANT]
