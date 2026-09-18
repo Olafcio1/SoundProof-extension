@@ -68,6 +68,16 @@ async function fetchDataFromSupabase(artist, platformClass) {
 }
 
 async function getArtistStatus(artist, platformClass, forcedRefresh) { // checks the cache first, if not found or expired, fetches from Supabase and updates the cache
+    if ((globalThis ?? window)['vblocked'] && vblocked.includes(artist)) {
+        console.log(`[SoundProof] VBlock found for ${artist} on ${platformClass}`);
+
+        return {
+            out_verified: true,
+            out_ai: 1,
+            out_human: 0
+        };
+    }
+
     const key = `sp_${platformClass}_${artist.toLowerCase().trim()}`;
 
     if (forcedRefresh == false) {
