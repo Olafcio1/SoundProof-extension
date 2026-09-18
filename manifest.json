@@ -71,6 +71,7 @@
         "Utils/popUpHandling.js",
         "Utils/artistData.js",
         "Utils/processCurrentSong.js",
+        "Utils/YtMusic/Hubs.js",
         "Platforms/youtube.js"
       ],
       "run_at": "document_end"
