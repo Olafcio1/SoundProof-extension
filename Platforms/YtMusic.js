@@ -24,7 +24,7 @@ function checkAndUpdateBadge() {
 
         try {
             //declared in ./YtMusic/Hubs.txt
-            if (hubs.includes(newArtist) && newTitle.includes("-")) {
+            if (hubs.includes(artistElement.href.split("/").reverse()[0]) && newTitle.includes("-")) {
                 let split = newTitle.split("-");
 
                 newArtist = split[0].split(",")[0].trim();
