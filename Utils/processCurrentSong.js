@@ -1,5 +1,30 @@
-window.DecideBadge = async function(AIwidth, humanWidth, selector, badgeLocation, skipElement, padding, platformClass) {
-    const artistElement = Array.from(document.querySelectorAll(selector)).find(el => el.textContent.trim() !== '') ?? document.querySelector(selector);
+const regexps = [
+    /(^|\(| )[a-zA-Z]{4}style/i  // jumpstyle, hardstyle, etc.
+];
+
+function SmartSkip(title) {
+    return regexps.some(rx => rx.test(title));
+}
+
+window.DecideBadge = async function(AIwidth, humanWidth, { artist: selectorArtist, title: selectorTitle }, badgeLocation, skipElement, padding, platformClass) {
+    let title = document.querySelector(selectorTitle)?.textContent?.trim?.());
+
+    if (title && SmartSkip(title)) {
+        const artistElement = Array.from(document.querySelectorAll(selectorArtist)).find(el => el.textContent.trim() !== '') ?? document.querySelector(selector);
+        if (!artistElement) return;
+
+        // Use stamped handle if present (e.g. YouTube), otherwise fall back to display name
+        const artistName = (artistElement.dataset.soundproofId || artistElement.textContent.trim()).toLowerCase();
+
+        console.log(`[SoundProof] Skipping ${artistName} — smart detection`);
+        skipElement.click();
+    } else {
+        return DecideBadge_internal(AIwidth, humanWidth, { artist: selectorArtist, title: selectorTitle }, badgeLocation, skipElement, padding, platformClass);
+    }
+};
+
+async function DecideBadge_internal(AIwidth, humanWidth, { artist: selectorArtist, title: selectorTitle }, badgeLocation, skipElement, padding, platformClass) {
+    const artistElement = Array.from(document.querySelectorAll(selectorArtist)).find(el => el.textContent.trim() !== '') ?? document.querySelector(selectorArtist);
     if (!artistElement) return;
 
     // Use stamped handle if present (e.g. YouTube), otherwise fall back to display name
@@ -59,4 +84,4 @@ window.DecideBadge = async function(AIwidth, humanWidth, selector, badgeLocation
     }
 
     return badge;
-};
+}
