@@ -1,7 +1,7 @@
 const regexps = [
     /(^|\(| )[a-zA-Z]{4}style/i,  // jumpstyle, hardstyle, etc.
     /(^|\(| )[a-zA-Z]{5}core/i,   // breakcore, etc.
-    /^MONTAGEM/
+    /^MONTAGEM/i
 ];
 
 function SmartSkip(title) {
