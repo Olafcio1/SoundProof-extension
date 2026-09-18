@@ -19,6 +19,8 @@
         "Utils/popUpHandling.js",
         "Utils/artistData.js",
         "Utils/processCurrentSong.js",
+        "Utils/YtMusic/Hubs.js",
+        "Utils/YtMusic/VBlocked.js",
         "Platforms/YtMusic.js"
       ],
       "run_at": "document_end"
@@ -71,7 +73,6 @@
         "Utils/popUpHandling.js",
         "Utils/artistData.js",
         "Utils/processCurrentSong.js",
-        "Utils/YtMusic/Hubs.js",
         "Platforms/youtube.js"
       ],
       "run_at": "document_end"
