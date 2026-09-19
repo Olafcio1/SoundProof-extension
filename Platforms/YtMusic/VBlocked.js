@@ -1,4 +1,4 @@
-const vblocked = `
+window.vblocked = `
 
 besomorph  //  UChxyrqFh3SDEJ_mVtOlliAg  //  @Besomorph
 
