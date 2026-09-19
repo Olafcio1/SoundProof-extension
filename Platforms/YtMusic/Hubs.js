@@ -1,4 +1,4 @@
-const hubs = `
+window.hubs = `
 
 UCGwALZJISywbMsd3QPvvrDQ  //  @whoisvaliant
 UCMOgdURr7d8pOVlc-alkfRg  //  @xKitoMusic
