@@ -85,3 +85,94 @@ function observePlayerBar() {
 }
 
 observePlayerBar();
+
+async function getArtistNameByURL(href) {
+    //TODO Text decoding
+    return (await (await fetch(href)).text()).split("<title>")[1].split("<")[0];
+}
+
+(function addToContextMenu() {
+    let ctx;
+
+    function addMe() {
+        let channelLink = ctx.querySelector(`#navigation-endpoint[href^="channel/"]`)?.href;
+        if (!channelLink)
+            return;
+
+        let aivote = ctx.querySelector("#soundproof-menu-vote") ||
+                     document.createElement("ytmusic-menu-service-item-renderer");
+
+        aivote.className = "style-scope ytmusic-menu-popup-renderer";
+        aivote.role = "menuitem";
+        aivote.tabindex = "-1";
+        aivote.ariaDisabled = "false";
+        aivote.ariaSelected = "false";
+        aivote.id = "soundproof-menu-vote";
+        //!!TODO Replace icon
+        aivote.innerHTML = `
+
+            <!--css-build:shady-->
+            <!--css-build:shady-->
+            <yt-icon class="icon style-scope ytmusic-menu-service-item-renderer" style="width: 18px; height: 18px;">
+                <!--css-build:shady-->
+                <!--css-build:shady-->
+            </yt-icon>
+            <yt-formatted-string class="text style-scope ytmusic-menu-service-item-renderer"></yt-formatted-string>
+
+        `;
+
+        setTimeout(() => {
+            aivote.querySelector("yt-icon").innerHTML = `
+                <span class="yt-icon-shape style-scope yt-icon ytSpecIconShapeHost">
+                    <div style="width: 100%; height: 100%; display: block; fill: currentcolor;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                            <path d="M15.153 1.508 15 1.5H3A1.5 1.5 0 001.5 3v12l.008.153A1.5 1.5 0 003 16.5h12l.153-.008a1.5 1.5 0 001.34-1.339L16.5 15V3a1.5 1.5 0 00-1.347-1.492ZM3 15V3h12v12H3Zm6-9.75a.75.75 0 00-.75.75v6.75h1.5V6A.75.75 0 009 5.25ZM6 7.5a.75.75 0 00-.75.75v4.5h1.5v-4.5A.75.75 0 006 7.5ZM12 9a.75.75 0 00-.75.75v3h1.5v-3A.75.75 0 0012 9Z"></path>
+                        </svg>
+                    </div>
+                </span>
+            `;
+
+            aivote.querySelector("yt-formatted-string").innerText = 'Vote as AI';
+            aivote.querySelector("yt-formatted-string").style.display = 'block!important';
+            aivote.querySelector("yt-formatted-string").removeAttribute('is-empty');
+        }, 100);
+
+        aivote.addEventListener("click", async () => {
+            try {
+                const { error } = await window.supabaseClient.rpc('handle_vote', {
+                    artist_id_input: await getArtistNameByURL(channelLink),
+                    vote_type_input: 'ai',
+                    platform_input: 'music'
+                });
+
+                if (error) console.error('[SoundProof] handle_vote_in_menu error:', error);
+
+                //showPopup call removed
+            } catch (err) {
+                console.error('[SoundProof] Vote failed:', err);
+            }
+        }, { once: true });
+
+        ctx.querySelector("tp-yt-paper-listbox").append(aivote);
+    }
+
+    //I know I could use a MutationObserver, but that's laggy.
+    addEventListener("mousedown", async ev => {
+        if (ev.button == 0 || ev.button == 2) {
+            if (ctx) {
+                setTimeout(() => {
+                    addMe();
+                }, 100);
+            } else {
+                var i = setInterval(() => {
+                    ctx = document.querySelector("ytmusic-menu-popup-renderer");
+
+                    if (ctx) {
+                        clearInterval(i);
+                        addMe();
+                    }
+                }, 60);
+            }
+        }
+    });
+})();
