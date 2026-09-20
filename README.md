@@ -5,6 +5,7 @@ A bleeding-edge fork of SoundProof with my proposed features
 > If you are here because you are an artist/fan who feels unfairly blocked, you're in luck!
 > 1. check if you are included [here](https://github.com/Olafcio1/SoundProof-extension/blob/main/Platforms/YtMusic/VBlocked.js). if you are, appeal [here](https://github.com/Olafcio1/SoundProof-extension/issues).
 > 2. if you're not, appeal [here](https://github.com/NuclearBlox/SoundProof-extension/wiki/Appealing-an-incorrect-rating).
+>
 > you HAVE TO provide a proof that you are making your music!
 
 > [!IMPORTANT]
